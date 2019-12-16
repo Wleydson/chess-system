@@ -16,12 +16,15 @@ public class Program {
 
         while (true){
             try{
-
                 UI.clearScreen();
-                UI.printBoard(chessMatch.getPieces());
+                UI.printMatch(chessMatch);
                 System.out.println();
                 System.out.println("Source: ");
                 ChessPosition source = UI.readChessPosition(scanner);
+
+                boolean[][] possibleMovies = chessMatch.possibleMoves(source);
+                UI.clearScreen();
+                UI.printBoard(chessMatch.getPieces(), possibleMovies);
 
                 System.out.println();
                 System.out.println("Target: ");
